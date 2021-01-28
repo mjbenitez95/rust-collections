@@ -1,3 +1,10 @@
+#[derive(Debug)]
+enum SpreadsheetCell {
+    Int(i32),
+    Float(f64),
+    Text(String),
+}
+
 fn main() {
     let mut v = vec![1, 2, 3, 4, 5];
     let third: &i32 = &v[2];
@@ -26,5 +33,16 @@ fn main() {
     for i in &mut v2 {
         *i += 50; // note the usage of the dereference operator (*)
         println!("New vector 2 has element {}!", i);
+    }
+
+    // we can use enums to put objects of different known types into a vector
+    let row = vec![
+        SpreadsheetCell::Int(3),
+        SpreadsheetCell::Text(String::from("Blue")),
+        SpreadsheetCell::Float(10.12),
+    ];
+
+    for i in &row {
+        println!("Row vector has element {:?}!", i);
     }
 }
