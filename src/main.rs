@@ -21,4 +21,10 @@ fn main() {
     for i in &v2 {
         println!("Vector 2 has element {}!", i);
     }
+
+    let mut v2 = vec![100, 32, 57];
+    for i in &mut v2 {
+        *i += 50; // note the usage of the dereference operator (*)
+        println!("New vector 2 has element {}!", i);
+    }
 }
