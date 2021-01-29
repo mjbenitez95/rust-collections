@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 #[derive(Debug)]
 enum SpreadsheetCell {
     Int(i32),
@@ -19,6 +21,9 @@ fn main() {
     index_strings();
     slice_strings();
     iterate_over_strings();
+    println!("");
+
+    create_hashmap();
     println!("");
 }
 
@@ -189,4 +194,27 @@ fn iterate_over_strings() {
         println!("A byte in \"नमस्ते\" is {}!", byte);
         // this prints the 18 byte array above
     }
+}
+
+fn create_hashmap() {
+    let mut scores = HashMap::new();
+    scores.insert(String::from("Blue"), 10);
+    scores.insert(String::from("Yellow"), 50);
+    println!("Our scores HashMap is \"{:?}\".", scores);
+
+    let teams = vec![String::from("Blue"), String::from("Yellow")];
+    let initial_scores = vec![10, 50];
+
+    let scores_from_vectors: HashMap<_, _> =
+        teams.into_iter().zip(initial_scores.into_iter()).collect();
+    /*
+        the zip() method creates a vector of tuples from two vectors,
+        and the collect() method gathers data into collection types,
+        including HashMap.
+    */
+
+    println!(
+        "Meanwhile, our scores_from_vectors HashMap is \"{:?}\".",
+        scores_from_vectors
+    );
 }
