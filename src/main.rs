@@ -21,6 +21,8 @@ fn main() {
     println!("");
     update_string();
     println!("");
+    concatenate_string();
+    println!("");
 }
 
 fn access_vector() {
@@ -73,7 +75,7 @@ fn introduce_enum_vector() {
 }
 
 fn create_string() {
-    let mut my_first_string = String::new();
+    let my_first_string = String::new();
 
     let data = "variable_to_string";
     let variable_to_string = data.to_string();
@@ -118,5 +120,26 @@ fn update_string() {
 
     let mut s3 = String::from("lo");
     s3.push('l');
-    println!("Now our strings are {} and {} and {}!", s, s2, s3);
+    println!(
+        "Now our strings are \"{}\" and \"{}\" and \"{}\"!",
+        s, s2, s3
+    );
+}
+
+fn concatenate_string() {
+    let s1 = String::from("Hello, ");
+    let s2 = String::from("world!");
+    let s3 = s1 + &s2; // note that this line will move s1 into s3, and so s1 can no longer be used
+
+    println!("Our new string is \"{}\"!", s3);
+
+    let tic = String::from("tic");
+    let tic_2 = String::from("tic");
+    let tac = String::from("tac");
+    let toe = String::from("toe");
+
+    let tic_tac_toe = tic + "-" + &tac + "-" + &toe;
+    let format_string = format!("{}-{}-{}", tic_2, tac, toe);
+    println!("Our tic_tac_toe string is \"{}\"!", tic_tac_toe);
+    println!("And with the format operation, it's \"{}\"!", format_string);
 }
