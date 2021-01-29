@@ -23,6 +23,8 @@ fn main() {
     println!("");
     concatenate_string();
     println!("");
+    index_strings();
+    println!("");
 }
 
 fn access_vector() {
@@ -142,4 +144,31 @@ fn concatenate_string() {
     let format_string = format!("{}-{}-{}", tic_2, tac, toe);
     println!("Our tic_tac_toe string is \"{}\"!", tic_tac_toe);
     println!("And with the format operation, it's \"{}\"!", format_string);
+}
+
+fn index_strings() {
+    let s1 = String::from("Hello!");
+    println!("An unindexed string: \"{}\"", s1);
+    /*
+        the following code is not allowed because strings in rust are
+        implemented as a wrapper over a Vec<u8>. But if the first character
+        takes two bytes, we would only get one byte, and so an invalid character,
+        if we took index[0]. So rust prevents us from compiling to avoid that.
+
+        // let h = s1[0];
+    */
+
+    /*
+        as an example, let's look at the Hindi word "नमस्ते" in the Devanagari script.
+        as a Vec<u8>, it is:
+        [
+            224, 164, 168, 224, 164, 174,
+            224, 164, 184, 224, 165, 141,
+            224, 164, 164, 224, 165, 135
+        ]
+        which is 18 bytes. These can be interpreted as Unicode scalar values,
+        which would result in ['न', 'म', 'स', '्', 'त', 'े'], 6 characters where the
+        4th and 6th character are not even valid on their own. Since the interpretation
+        can be ambiguous, Rust avoids the situation and does not allow string indexing.
+    */
 }
