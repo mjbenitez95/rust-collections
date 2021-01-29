@@ -7,26 +7,17 @@ enum SpreadsheetCell {
 
 fn main() {
     access_vector();
-    println!("");
     mutate_vector();
-    println!("");
     iterate_and_mutate_vector();
-    println!("");
     introduce_enum_vector();
     println!("");
 
     create_string();
-    println!("");
     properly_encoded_strings();
-    println!("");
     update_string();
-    println!("");
     concatenate_string();
-    println!("");
     index_strings();
-    println!("");
     slice_strings();
-    println!("");
     iterate_over_strings();
     println!("");
 }
