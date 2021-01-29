@@ -24,6 +24,7 @@ fn main() {
     println!("");
 
     create_hashmap();
+    hashmap_ownership();
     println!("");
 }
 
@@ -217,4 +218,20 @@ fn create_hashmap() {
         "Meanwhile, our scores_from_vectors HashMap is \"{:?}\".",
         scores_from_vectors
     );
+}
+
+fn hashmap_ownership() {
+    let field_name = String::from("Favorite color");
+    let field_value = String::from("Blue");
+
+    let mut map = HashMap::new();
+    map.insert(field_name, field_value);
+
+    println!("Map is :\"{:?}\".", map);
+
+    /*
+        the following line is not valid because map.insert takes ownership
+        of its arguments, meaning field_name and field_value are no longer valid
+    */
+    // println!("Map contains key {} and value {}", field_name, field_value);
 }
