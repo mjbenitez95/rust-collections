@@ -25,6 +25,8 @@ fn main() {
     println!("");
     index_strings();
     println!("");
+    slice_strings();
+    println!("");
 }
 
 fn access_vector() {
@@ -77,7 +79,7 @@ fn introduce_enum_vector() {
 }
 
 fn create_string() {
-    let my_first_string = String::new();
+    let _my_first_string = String::new();
 
     let data = "variable_to_string";
     let variable_to_string = data.to_string();
@@ -171,4 +173,15 @@ fn index_strings() {
         4th and 6th character are not even valid on their own. Since the interpretation
         can be ambiguous, Rust avoids the situation and does not allow string indexing.
     */
+}
+
+fn slice_strings() {
+    let hello = "Здравствуйте";
+    let s = &hello[0..4];
+
+    println!(
+        "A slice with the first four bytes of \"{}\" yields \"{}\"!",
+        hello, s
+    );
+    // note that &hello[0..1] would cause a Rust panc, since byte index 1 is not a valid char.
 }
