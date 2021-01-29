@@ -27,6 +27,7 @@ fn main() {
     hashmap_ownership();
     hashmap_access();
     hashmap_update();
+    hashmap_update_based_on_current_value();
     println!("");
 }
 
@@ -284,4 +285,18 @@ fn hashmap_update() {
             key, value
         );
     }
+}
+
+fn hashmap_update_based_on_current_value() {
+    let text = "hello world wonderful world";
+    let mut map = HashMap::new();
+
+    for word in text.split_whitespace() {
+        let count = map.entry(word).or_insert(0);
+        *count += 1;
+        // since or_insert returns a mutable reference that is stored in count,
+        // dereferencing and incrementing count increases the value inside the hashmap.
+    }
+
+    println!("Our final map is {:?}!", map);
 }
