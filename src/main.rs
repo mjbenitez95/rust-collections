@@ -7,9 +7,18 @@ enum SpreadsheetCell {
 
 fn main() {
     access_vector();
+    println!("");
     mutate_vector();
+    println!("");
     iterate_and_mutate_vector();
+    println!("");
     introduce_enum_vector();
+    println!("");
+
+    create_string();
+    println!("");
+    properly_encoded_strings();
+    println!("");
 }
 
 fn access_vector() {
@@ -58,5 +67,41 @@ fn introduce_enum_vector() {
 
     for i in &row {
         println!("Row vector has element {:?}!", i);
+    }
+}
+
+fn create_string() {
+    let mut my_first_string = String::new();
+
+    let data = "variable_to_string";
+    let variable_to_string = data.to_string();
+
+    let literal_to_string = "literal_to_string".to_string();
+    let string_from_literal = String::from("string_from_literal");
+
+    println!(
+        "We have {} and {} and {}!",
+        variable_to_string, literal_to_string, string_from_literal
+    );
+}
+
+fn properly_encoded_strings() {
+    // since strings are UTF-8 encoded, we can include any properly encoded data in them
+    let strings: Vec<String> = vec![
+        String::from("السلام عليكم"),
+        String::from("Dobrý den"),
+        String::from("Hello"),
+        String::from("שָׁלוֹם"),
+        String::from("नमस्ते"),
+        String::from("こんにちは"),
+        String::from("안녕하세요"),
+        String::from("你好"),
+        String::from("Olá"),
+        String::from("Здравствуйте"),
+        String::from("Hola"),
+    ];
+
+    for some_string in strings {
+        println!("Our strings vector has the string \"{}\"!", some_string);
     }
 }
