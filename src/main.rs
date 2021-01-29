@@ -27,6 +27,8 @@ fn main() {
     println!("");
     slice_strings();
     println!("");
+    iterate_over_strings();
+    println!("");
 }
 
 fn access_vector() {
@@ -162,7 +164,7 @@ fn index_strings() {
 
     /*
         as an example, let's look at the Hindi word "नमस्ते" in the Devanagari script.
-        as a Vec<u8>, it is:
+        as a Vec<u8>, it is an array of 18 bytes:
         [
             224, 164, 168, 224, 164, 174,
             224, 164, 184, 224, 165, 141,
@@ -184,4 +186,16 @@ fn slice_strings() {
         hello, s
     );
     // note that &hello[0..1] would cause a Rust panc, since byte index 1 is not a valid char.
+}
+
+fn iterate_over_strings() {
+    for character in "नमस्ते".chars() {
+        println!("A character in \"नमस्ते\" is {}!", character);
+        // again, this prints the 6 characters, 2 of which are invalid
+    }
+
+    for byte in "नमस्ते".bytes() {
+        println!("A byte in \"नमस्ते\" is {}!", byte);
+        // this prints the 18 byte array above
+    }
 }
