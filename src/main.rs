@@ -26,7 +26,7 @@ fn main() {
     create_hashmap();
     hashmap_ownership();
     hashmap_access();
-
+    hashmap_update();
     println!("");
 }
 
@@ -238,22 +238,50 @@ fn hashmap_ownership() {
     // println!("Map contains key {} and value {}", field_name, field_value);
 }
 
-fn hashmap_access(){
+fn hashmap_access() {
     let mut scores = HashMap::new();
 
     scores.insert(String::from("Blue"), 10);
     scores.insert(String::from("Yellow"), 50);
 
-    let team_name = String::from("Blue"); 
+    let team_name = String::from("Blue");
     let score = scores.get(&team_name); // note that this returns an Option<T>
 
     match score {
         Some(num) => println!("Team {} has a score of {:?} points!", team_name, num),
-        None => println!("Team {} does not seem to have a score!", team_name)
+        None => println!("Team {} does not seem to have a score!", team_name),
     }
 
     for (key, value) in &scores {
         // note that this iteration is in an arbitrary order
-        println!("Iterating: Team {} has a score of {:?} points!", key, value); 
+        println!("Iterating: team {} has a score of {:?} points!", key, value);
+    }
+}
+
+fn hashmap_update() {
+    let mut scores = HashMap::new();
+
+    // overwrite previous value
+    scores.insert(String::from("Blue"), 10);
+    scores.insert(String::from("Blue"), 25);
+    for (key, value) in &scores {
+        println!(
+            "After the overwrite, team {} has a score of {:?} points!",
+            key, value
+        );
+    }
+
+    // pattern to only insert if a key has no value
+    scores.entry(String::from("Yellow")).or_insert(50); // no current value, so 50 is entered
+    scores.entry(String::from("Blue")).or_insert(50); // nothing happens
+
+    // or_insert returns a mutable reference for the value for the key, or
+    // it'll insert the value given as an argument.
+
+    for (key, value) in &scores {
+        println!(
+            "In the end, team {} has a score of {:?} points!",
+            key, value
+        );
     }
 }
