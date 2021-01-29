@@ -19,6 +19,8 @@ fn main() {
     println!("");
     properly_encoded_strings();
     println!("");
+    update_string();
+    println!("");
 }
 
 fn access_vector() {
@@ -104,4 +106,17 @@ fn properly_encoded_strings() {
     for some_string in strings {
         println!("Our strings vector has the string \"{}\"!", some_string);
     }
+}
+
+fn update_string() {
+    let mut s = String::from("foo");
+    s.push_str("bar");
+
+    let mut s2 = String::from("foo");
+    let s2_suffix = "bar";
+    s2.push_str(s2_suffix);
+
+    let mut s3 = String::from("lo");
+    s3.push('l');
+    println!("Now our strings are {} and {} and {}!", s, s2, s3);
 }
