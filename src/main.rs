@@ -26,6 +26,7 @@ fn main() {
     create_hashmap();
     hashmap_ownership();
     hashmap_access();
+
     println!("");
 }
 
@@ -249,5 +250,10 @@ fn hashmap_access(){
     match score {
         Some(num) => println!("Team {} has a score of {:?} points!", team_name, num),
         None => println!("Team {} does not seem to have a score!", team_name)
+    }
+
+    for (key, value) in &scores {
+        // note that this iteration is in an arbitrary order
+        println!("Iterating: Team {} has a score of {:?} points!", key, value); 
     }
 }
