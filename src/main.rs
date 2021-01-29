@@ -25,6 +25,7 @@ fn main() {
 
     create_hashmap();
     hashmap_ownership();
+    hashmap_access();
     println!("");
 }
 
@@ -234,4 +235,19 @@ fn hashmap_ownership() {
         of its arguments, meaning field_name and field_value are no longer valid
     */
     // println!("Map contains key {} and value {}", field_name, field_value);
+}
+
+fn hashmap_access(){
+    let mut scores = HashMap::new();
+
+    scores.insert(String::from("Blue"), 10);
+    scores.insert(String::from("Yellow"), 50);
+
+    let team_name = String::from("Blue"); 
+    let score = scores.get(&team_name); // note that this returns an Option<T>
+
+    match score {
+        Some(num) => println!("Team {} has a score of {:?} points!", team_name, num),
+        None => println!("Team {} does not seem to have a score!", team_name)
+    }
 }
